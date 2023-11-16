@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/style2.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- header site -->
+    <header>
+      <div class="logo"><span>E</span>-Solutions</div>
+      <ul class="navlist">
+          <li><a href="../index.html" style="--i:1">Home</a></li>
+          <li><a href="about.html" style="--i:2">About</a></li>
+          <li><a href="services.html" style="--i:3">Services</a></li>
+          <li><a href="skills.html" style="--i:4">Skills</a></li>
+          <li><a href="portfolio.html" style="--i:5">Portfolio</a></li>
+          <li><a href="contact.html" style="--i:6">Contact</a></li>
+      </ul>
+      <div id="menu-icon" class="bx bx-menu"></div>
+  </header>
+  <!-- end header site -->
+<section></section>
+    <div class="container">
+      <span class="big-circle scroll-bottom"></span>
+      <img src="img/shape.png" class="square" alt="" />
+      <div class="form">
+        <div class="contact-info scroll-scale">
+          <h3 class="title">Let's get in touch</h3>
+          <p class="text">
+        
+          </p>
+
+          <div class="info">
+            <div class="information">
+              <i class='bx bx-location-plus bx-tada' style='color:#47d4ba' ></i>
+              <p>Q65 Mzilikazi, Bulawayo, Zimbabwe</p>
+            </div>
+            <div class="information">
+              <i class='bx bx-envelope bx-tada' style='color:#47d4ba' ></i>
+              <a>erictaruwinga0827@gmail.com</a>
+            </div>
+            <div class="information">
+              <i class='bx bxs-phone-call bx-tada' style='color:#47d4ba' ></i>
+              <p>+263-77-779-9316</p>
+            </div>
+          </div>
+
+          <div class="social-media">
+            <p>Connect with us :</p>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/ercric1/" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a <a href="https://github.com/erc-net" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.instagram.com/erc_ric1/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/eric-taruwinga-6ba0a517a"/>
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+
+              <a href="mailto:erictaruwinga0827@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form scroll-scale">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+
+          <form action="index.html" autocomplete="off">
+            <h3 class="title">Contact us</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Username</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+              <input type="tel" name="phone" class="input" />
+              <label for="">Phone</label>
+              <span>Phone</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <button class="btn2"
+>Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //active menu ////////////////////////////////////////////
+
+let menuLi = document.querySelectorAll('header ul li a');
+let section = document.querySelectorAll('section');
+
+function activeMenu(){
+    let len = section.length;
+    while(--len && window.scrollY + 97 < section[len].offsetTop){}
+    menuLi.forEach(sec => sec.classList.remove("active"));
+    menuLi[len].classList.add("active");
+}
+
+activeMenu();
+window.addEventListener("scroll",activeMenu);
+
+// sticky navbar ////////////////////////////////////////////
+const header = document.querySelector("header");
+window.addEventListener("scroll",function(){
+    header.classList.toggle("sticky",window.scrollY > 50);
+})
+
+// toggle icon navbar ////////////////////////////////////////////
+
+let menuIcon =  document.querySelector("#menu-icon");
+let navlist = document.querySelector(".navlist");
+
+menuIcon.onclick = ()=>{
+    menuIcon.classList.toggle("bx-x");
+    navlist.classList.toggle("open");
+}
+
+window.onscroll = ()=>{
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
+
+// parallax ////////////////////////////////////////////
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show-items");
+        }else{
+            entry.target.classList.remove("show-items");
+        }
+    })
+})
+
+const scrollScale = document.querySelectorAll(".scroll-scale");
+scrollScale.forEach((el)=>observer.observe(el));
+
+const scrollBottom = document.querySelectorAll(".scroll-bottom");
+scrollBottom.forEach((el)=>observer.observe(el));
+
+const scrollTop = document.querySelectorAll(".scroll-top");
+scrollTop.forEach((el)=>observer.observe(el));
+
+const inputs = document.querySelectorAll(".input");
+
+function focusFunc() {
+  let parent = this.parentNode;
+  parent.classList.add("focus");
+}
+
+function blurFunc() {
+  let parent = this.parentNode;
+  if (this.value == "") {
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", focusFunc);
+  input.addEventListener("blur", blurFunc);
+});
+
+  </script>
+    <script src="app.js"></script>
+    <script src="../mixitup.min.js"></script>
+    <script src="../script.js"></script>
+</html>

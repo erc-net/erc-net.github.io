@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UV-Compartible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="logo"><span>E</span>-Solutions</div>
+        <ul class="navlist">
+            <li><a href="../index.html" style="--i:1">Home</a></li>
+            <li><a href="about.html" style="--i:2">About</a></li>
+            <li><a href="services.html" style="--i:3">Services</a></li>
+            <li><a href="skills.html" style="--i:4">Skills</a></li>
+            <li><a href="portfolio.html" style="--i:5">Portfolio</a></li>
+            <li><a href="contact.html" style="--i:6">Contact</a></li>
+        </ul>
+        <div id="menu-icon" class="bx bx-menu"></div>
+    </header>
+     <!----------------------------------------- About section ------------------------------------------------------>
+ <section id="about" class="about">
+    <div class="img-about scroll-scale ">
+        <img src="../img/eric.png" alt="AbouT-iMG" class="eric2">
+        <div class="info-about1">
+            <span>1</span>
+            <p class="avd">Year of Experience</p>
+        </div>
+        <div class="info-about2">
+            <span>10+</span>
+            <p class="avd">Projects</p>
+        </div>
+        <div class="info-about3">
+            <span>10+</span>
+            <p class="avd">Happy Clients</p>
+        </div>
+    </div>
+
+    <div class="about-content scroll-scale">
+        <span>Let me introduce myself</span>
+        <h2>About Me</h2>
+        <h3>A story of good</h3>
+        <p><strong>Hello World!</strong>
+            My name is Eric T Taruwinga a Junior Software Engineer from Zimbabwe. I am passionate about
+             technology and always looking for new challenges. I recently completed
+              a 1-year software engineering program offered by ALX-Africa, and also  currently taking specialization 
+              courses offered by Coursera. I am a  hard worker and always eager to learn new things.
+               I am  a valuable asset to any team, and sure to have a successful career in software engineering.
+        </p>
+
+        <div class="btn-box">
+            <a href="#" class="btn">Read More!</a>
+        </div>
+    </div>
+
+</section>
+</body>
+<script>
+    //active menu ////////////////////////////////////////////
+
+let menuLi = document.querySelectorAll('header ul li a');
+let section = document.querySelectorAll('section');
+
+function activeMenu(){
+    let len = section.length;
+    while(--len && window.scrollY + 97 < section[len].offsetTop){}
+    menuLi.forEach(sec => sec.classList.remove("active"));
+    menuLi[len].classList.add("active");
+}
+
+activeMenu();
+window.addEventListener("scroll",activeMenu);
+
+// sticky navbar ////////////////////////////////////////////
+const header = document.querySelector("header");
+window.addEventListener("scroll",function(){
+    header.classList.toggle("sticky",window.scrollY > 50);
+})
+
+// toggle icon navbar ////////////////////////////////////////////
+
+let menuIcon =  document.querySelector("#menu-icon");
+let navlist = document.querySelector(".navlist");
+
+menuIcon.onclick = ()=>{
+    menuIcon.classList.toggle("bx-x");
+    navlist.classList.toggle("open");
+}
+
+window.onscroll = ()=>{
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
+
+// parallax ////////////////////////////////////////////
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show-items");
+        }else{
+            entry.target.classList.remove("show-items");
+        }
+    })
+})
+
+const scrollScale = document.querySelectorAll(".scroll-scale");
+scrollScale.forEach((el)=>observer.observe(el));
+
+const scrollBottom = document.querySelectorAll(".scroll-bottom");
+scrollBottom.forEach((el)=>observer.observe(el));
+
+const scrollTop = document.querySelectorAll(".scroll-top");
+scrollTop.forEach((el)=>observer.observe(el));
+</script>
+<script src="../mixitup.min.js"></script>
+<script src="../script.js"></script>
+</html>

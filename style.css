@@ -133,9 +133,17 @@ section {
 }
 
 .home-content {
+    padding-left: 10px;
+    padding-bottom:10px ;
     max-width: 600px;
+    border-radius: 100%;
+    background: linear-gradient(45deg,var(--hover-color),var(--hover-color), rgba(38, 98, 102, 0.781),var(--bg-color),
+        var(--bg-color), var(--bg-color),  
+        var(--bg-color), var(--bg-color),
+        rgba(38, 126, 133, 0.781),
+        var(--hover-color), var(--hover-color),var(--hover-color), rgba(3, 168, 223, 0.267));
 }
-.home-content h1{
+.home-content h2{
     font-size: var(--big-font);
     font-weight: 700;
 }
@@ -145,29 +153,29 @@ section {
     font-weight: 600;
 }
 
-.change-text h3{
+.change-text h4{
     display: inline-flex;
     margin: 0;
     vertical-align: top;
 }
 
-.change-text h3 .word{
+.change-text h4 .word{
     position: absolute;
     display: flex;
     opacity: 0;
 }
-.change-text h3 .word .letter{
+.change-text h4 .word .letter{
     transform-origin: center center 25px;
 }
-.change-text h3 .word .letter.out{
+.change-text h4 .word .letter.out{
     transform: rotateX(90deg);
     transition: 0.32s cubic-bezier(0.6,0,0.7,0.2);
 }
 
-.change-text h3 .word .letter.in{
+.change-text h4 .word .letter.in{
     transition: 0.38s ease;
 }
-.change-text h3 .word .letter.behind{
+.change-text h4 .word .letter.behind{
     transform: rotateX(-90deg);
 }
 
@@ -301,16 +309,16 @@ section {
 .home-image{
     position: relative;
 }
-.img-box {
+.img-box img {
     width: 100%;
-    max-width: 350px;
+    max-width: 1050px;
     height: auto;
+    box-shadow: var(--neon-box-shadow);
+    
+    
 }
-.eric{
-    margin-left: -200px;
-    width: 700px;
-    height:auto;
-}
+
+/*
 .liquid-shape {
     position: absolute;
     width: 100%;
@@ -321,7 +329,7 @@ section {
 
 .liquid-shape:nth-child(2){
     filter: blur(50px);
-} 
+} */
 
 /*About Section Css ------------------------------------------------------- */
 .about{

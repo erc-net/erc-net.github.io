@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UV-Compartible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="logo"><span>E</span>-Solutions</div>
+        <ul class="navlist">
+            <li><a href="../index.html" style="--i:1">Home</a></li>
+            <li><a href="about.html" style="--i:2">About</a></li>
+            <li><a href="services.html" style="--i:3">Services</a></li>
+            <li><a href="skills.html" style="--i:4">Skills</a></li>
+            <li><a href="portfolio.html" style="--i:5">Portfolio</a></li>
+            <li><a href="contact.html" style="--i:6">Contact</a></li>
+        </ul>
+        <div id="menu-icon" class="bx bx-menu"></div>
+    </header>
+    <!----------------------------------------- Services section ------------------------------------------------------>
+<section id="services" class="services">
+    <div class="main-text  scroll-scale">
+        <span>What i will do for you</span>
+        <h1>Services</h1>
+    </div>
+
+    <div class="section-services scroll-bottom ">
+        <div class="services-box">
+            <i class='bx bx-chalkboard services-icon' ></i>
+            <h3>Web-Development</h3>
+            <p>Creating websites or web applications<br>
+                Designing, and maintaining the functionality of a website
+            </p>
+            <div class="btn-box services-btn">
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+
+        <div class="services-box">
+            <i class='bx bx-code-alt services-icon'></i>
+            <h3>Tutoring</h3>
+            <p>Teaching or helping someone learn how to write efficient and effective code.
+                <br>In-person classes, online courses, or one-on-one sessions
+            </p>
+            <div class="btn-box services-btn">
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+
+        <div class="services-box">
+            <i class='bx bx-code-block services-icon'></i>
+            <h3>Software-Development</h3>
+            <p>Designing, creating, testing, and maintaining software applications <br>
+                Create high-quality software that meets the needs of users and solves their problems. </p>
+            <div class="btn-box services-btn">
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+<script>
+    //active menu ////////////////////////////////////////////
+
+let menuLi = document.querySelectorAll('header ul li a');
+let section = document.querySelectorAll('section');
+
+function activeMenu(){
+    let len = section.length;
+    while(--len && window.scrollY + 97 < section[len].offsetTop){}
+    menuLi.forEach(sec => sec.classList.remove("active"));
+    menuLi[len].classList.add("active");
+}
+
+activeMenu();
+window.addEventListener("scroll",activeMenu);
+
+// sticky navbar ////////////////////////////////////////////
+const header = document.querySelector("header");
+window.addEventListener("scroll",function(){
+    header.classList.toggle("sticky",window.scrollY > 50);
+})
+
+// toggle icon navbar ////////////////////////////////////////////
+
+let menuIcon =  document.querySelector("#menu-icon");
+let navlist = document.querySelector(".navlist");
+
+menuIcon.onclick = ()=>{
+    menuIcon.classList.toggle("bx-x");
+    navlist.classList.toggle("open");
+}
+
+window.onscroll = ()=>{
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
+
+// parallax ////////////////////////////////////////////
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show-items");
+        }else{
+            entry.target.classList.remove("show-items");
+        }
+    })
+})
+
+const scrollScale = document.querySelectorAll(".scroll-scale");
+scrollScale.forEach((el)=>observer.observe(el));
+
+const scrollBottom = document.querySelectorAll(".scroll-bottom");
+scrollBottom.forEach((el)=>observer.observe(el));
+
+const scrollTop = document.querySelectorAll(".scroll-top");
+scrollTop.forEach((el)=>observer.observe(el));
+var mixer = mixitup('.portfolio-gallery');
+</script>
+</html>

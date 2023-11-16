@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UV-Compartible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="logo"><span>E</span>-Solutions</div>
+        <ul class="navlist">
+            <li><a href="../index.html" style="--i:1">Home</a></li>
+            <li><a href="about.html" style="--i:2">About</a></li>
+            <li><a href="services.html" style="--i:3">Services</a></li>
+            <li><a href="skills.html" style="--i:4">Skills</a></li>
+            <li><a href="portfolio.html" style="--i:5">Portfolio</a></li>
+            <li><a href="contact.html" style="--i:6">Contact</a></li>
+        </ul>
+        <div id="menu-icon" class="bx bx-menu"></div>
+    </header>
+    <!----------------------------------------- Portfolio section ------------------------------------------------------>
+<section id="portfolio" class="portfolio">
+    <div class="main-text scroll-scale">
+        <span> What i did </span>
+        <h2>Latest Projects</h2>
+    </div>
+    <div class="container ">
+        <!--<div class="filter-buttons" scroll-scale>
+            <button class="button" data-filter="all">All</button>
+            <button class="button" data-filter=".product">Product</button>
+            <button class="button" data-filter=".inter">Interacting</button>
+            <button class="button" data-filter=".web">Web App</button>
+        </div>-->
+
+        <div class="portfolio-gallery scroll-bottom">
+            <div class="port-box mix product">
+                <div class="port-image">
+                    <img src="../img/marten-bjork-n_IKQDCyrG0-unsplash.jpg" alt="placeholder">
+                </div>
+                <div class="port-content">
+                    <h3>Hotel Management Software</h3>
+                    <p>Used to store customer Information<br>
+                        Uses Mysql database
+                    </p>
+                    <a href="https://youtu.be/5geyaqpFiTw"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+
+            <div class="port-box mix inter">
+                <div class="port-image">
+                    <img src="../img/jeshoots-com-eCktzGjC-iU-unsplash.jpg" alt="placeholder">
+                </div>
+                <div class="port-content">
+                    <h3>Dooms-Day Raycasting game</h3>
+                    <p>
+                        The Dooms-Day Raycasting game is a Python game that uses raycasting techniques to create a 3D-like environment.
+                    </p>
+                    <a href="https://github.com/mondlivundla/Doomsday_Raycasting_Night"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+
+            <div class="port-box mix product">
+                <div class="port-image">
+                    <img src="../img/onur-binay-Uw_8vSroCSc-unsplash.jpg" alt="placeholder">
+                </div>
+                <div class="port-content">
+                    <h3>Login Page </h3>
+                    <p>
+                        A react native login page that uses firebase authentication and
+                         also keeps the user login and register details
+                    </p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+
+            <div class="port-box mix web">
+                <div class="port-image">
+                    <img src="../img/agence-olloweb-qfp4-Ud6Fyg-unsplash.jpg" alt="placeholder">
+                </div>
+                <div class="port-content">
+                    <h3>Text-Analyzer</h3>
+                    <p>
+                        (JS)<br>
+                        Counts the number of word in a sentence
+                        THe avarage number of characters
+                    </p>
+                    <a href="https://github.com/erc-net/text-analyzer"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+
+            <div class="port-box mix inter">
+                <div class="port-image">
+                    <img src="../img/5.jpg" alt="placeholder">
+                </div>
+                <div class="port-content">
+                    <h3>Software Development</h3>
+                    <p>Lorem ipsum non ullam velit numquam dolorum autem 
+                    expedita doloribus voluptatibus sunt nihil error veniam?</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+
+            <div class="port-box mix web">
+                <div class="port-image">
+                    <img src="../img/6.jpg" alt="placeholder">
+                </div>
+                <div class="port-content">
+                    <h3>Software Development</h3>
+                    <p>Lorem ipsum non ullam velit numquam dolorum autem 
+                    expedita doloribus voluptatibus sunt nihil error veniam?</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<script src="mixitup.min.js"></script>
+<script>
+    
+    //active menu ////////////////////////////////////////////
+
+let menuLi = document.querySelectorAll('header ul li a');
+let section = document.querySelectorAll('section');
+
+function activeMenu(){
+    let len = section.length;
+    while(--len && window.scrollY + 97 < section[len].offsetTop){}
+    menuLi.forEach(sec => sec.classList.remove("active"));
+    menuLi[len].classList.add("active");
+}
+
+activeMenu();
+window.addEventListener("scroll",activeMenu);
+
+// sticky navbar ////////////////////////////////////////////
+const header = document.querySelector("header");
+window.addEventListener("scroll",function(){
+    header.classList.toggle("sticky",window.scrollY > 50);
+})
+
+// toggle icon navbar ////////////////////////////////////////////
+
+let menuIcon =  document.querySelector("#menu-icon");
+let navlist = document.querySelector(".navlist");
+
+menuIcon.onclick = ()=>{
+    menuIcon.classList.toggle("bx-x");
+    navlist.classList.toggle("open");
+}
+
+window.onscroll = ()=>{
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
+
+// parallax ////////////////////////////////////////////
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show-items");
+        }else{
+            entry.target.classList.remove("show-items");
+        }
+    })
+})
+
+const scrollScale = document.querySelectorAll(".scroll-scale");
+scrollScale.forEach((el)=>observer.observe(el));
+
+const scrollBottom = document.querySelectorAll(".scroll-bottom");
+scrollBottom.forEach((el)=>observer.observe(el));
+
+const scrollTop = document.querySelectorAll(".scroll-top");
+scrollTop.forEach((el)=>observer.observe(el));
+
+
+var mixer = mixitup('.portfolio-gallery');
+</script>
+<script src="../script.js"></script>
+</html>
